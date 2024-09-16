@@ -1,7 +1,7 @@
 <?php
 
 enum EnumFraqueza: string{
-  case Agua = 'grama';
-  case Fogo = 'agua';
-  case Grama = 'fogo';
+  case Agua = 'GRAMA';
+  case Fogo = 'AGUA';
+  case Grama = 'FOGO';
 }
