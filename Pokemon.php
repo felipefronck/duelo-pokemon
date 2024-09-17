@@ -1,11 +1,11 @@
 <?php
 
 abstract class Pokemon extends Movimentos implements InterfaceCombate{
-  protected string $nome;
-  protected EnumTipo $tipoPokemon;
-  protected int $hp;
-  protected EnumFraqueza $fraqueza;
-  protected EnumResistencia $resistencia;
+  public string $nome;
+  public EnumTipo $tipoPokemon;
+  public int $hp;
+  public EnumFraqueza $fraqueza;
+  public EnumResistencia $resistencia;
 
   function __construct(string $nome, EnumTipo $tipoPokemon, int $hp, EnumFraqueza $fraqueza, EnumResistencia $resistencia){
     $this->nome = $nome;
