@@ -1,26 +1,12 @@
 <?php
+require_once("Pokemon.php");
+require_once("InterfacePassiva.php");
 
-class PokemonAgua extends Pokemon{
-  
-  public function calculaVida($hp) {
-    $vida = (((31 * 2) / 4 + $hp + 100) / 100) * 50 + 10 + 50;
-    return $vida;
-  }
+class PokemonAgua extends Pokemon implements InterfacePassiva{
 
-  public function calculaAtaqueBasico($ataque){
-    $danoAtaqueBasico = ((2 * $ataque + 31) * 50/100) + 5;
-    return $danoAtaqueBasico;
-  }
-
-  public function calculaAtaqueEspecial($ataque){
-    
-  }
-
-  public function calculaDefesaBasica($defesa){
-    
-  }
-
-  public function calculaDefesaEspecial($defesa){
-    
+  public function ativarPassiva(){
+    $danoPassivo = (int)($this->hpAtual * 0.10);
+    $this->receberDano($danoPassivo);
+    echo "                {$this->nome} SOFREU {$danoPassivo} DE DANO!\n\n\n";
   }
 }

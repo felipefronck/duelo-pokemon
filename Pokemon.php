@@ -1,8 +1,9 @@
 <?php
 
-abstract class Pokemon extends Movimento implements InterfaceCombate{
+abstract class Pokemon{
   public string $nome;
   public int $hp;
+  public float $hpAtual;
   public string $tipoPokemon;
   public string $fraqueza;
   public string $resistencia;
@@ -10,55 +11,35 @@ abstract class Pokemon extends Movimento implements InterfaceCombate{
   public int $defesa;
   public int $ataqueEspecial;
   public int $defesaEspecial;
-  public $movimentos = [];
-
-  function __construct(string $nome, int $hp, string $tipoPokemon, string $fraqueza, string $resistencia, int $ataque, int $defesa, int $ataqueEspecial, int $defesaEspecial, array $movimentos = []){
+  public $movimentos;
+  
+  
+  public function __construct(string $nome, int $hp, string $tipoPokemon, string $fraqueza, string $resistencia, int $ataque, int $defesa, int $ataqueEspecial, int $defesaEspecial, array $movimentos){
     $this->nome = $nome;
     $this->hp = $hp;
+    $this->hpAtual = $this->calcVida($hp);
     $this->tipoPokemon = $tipoPokemon;
     $this->fraqueza = $fraqueza;
     $this->resistencia = $resistencia;
-    $this->ataque = $ataque;
-    $this->defesa = $defesa;
-    $this->ataqueEspecial = $ataqueEspecial;
-    $this->defesaEspecial = $defesaEspecial;
+    $this->ataque = $this->calcStat($ataque);
+    $this->defesa = $this->calcStat($defesa);
+    $this->ataqueEspecial = $this->calcStat($ataqueEspecial);
+    $this->defesaEspecial = $this->calcStat($defesaEspecial);
     $this->movimentos = $movimentos;
   }
 
-  abstract protected function calculaVida(int $hp);
-
-  public function setNome(string $nome){
-    $this->nome = $nome;
-  }
-  public function getNome(){
-    return $this->nome;
-  }
-  
-  public function setTipo(string $tipoPokemon){
-    $this->tipoPokemon = $tipoPokemon;
-  }
-  public function getTipo(){
-    return $this->tipoPokemon;
+  public function receberDano($dano){
+    $this->hpAtual -= $dano;
+    if($this->hpAtual < 0){
+      $this->hpAtual = 0;
+    }
   }
 
-  public function setHp(int $hp){
-    $this->hp = $hp;
-  }
-  public function getHp(){
-    return $this->hp;
+  public function calcVida($hp){
+    return (int)(((31 * 2) / 4 + $hp + 100) / 100) * 50 + 10 + 50;
   }
 
-  public function setFraqueza(string $fraqueza){
-    $this->fraqueza = $fraqueza;
-  }
-  public function getFraqueza(){
-    return $this->fraqueza;
-  }
-
-  public function setResistencia(string $resistencia){
-    $this->resistencia = $resistencia;
-  }
-  public function getResistencia(){
-    return $this->resistencia;
+  public function calcStat($stat){
+    return (int)((2 * $stat + 31) * 50/100) + 5;
   }
 }
