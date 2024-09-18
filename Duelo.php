@@ -24,13 +24,11 @@ class Duelo implements InterfaceDuelo{
       if($turno % 2 == 1){
         echo "                      +---------------+\n";
         echo "                          PASSIVA:\n";
-        echo "                      +---------------+\n";
         $this->pokemon1->ativarPassiva();
         $this->selecionarMovimento($this->pokemon1, $this->pokemon2);
       } else {
-        echo "                       +--------------+\n";
+        echo "                      +---------------+\n";
         echo "                          PASSIVA:\n";
-        echo "                       +--------------+\n";
         $this->pokemon2->ativarPassiva();
         $this->selecionarMovimento($this->pokemon2, $this->pokemon1);
       }
@@ -45,10 +43,10 @@ class Duelo implements InterfaceDuelo{
         return;
       } else if($this->pokemon2->hpAtual <= 0){
         echo "+-----------------------------------------------------------+\n";
-        echo "           {$this->pokemon2->nome} FOI DERROTADO\n";
+        echo "                  {$this->pokemon2->nome} FOI DERROTADO\n";
         echo "+-----------------------------------------------------------+\n\n";
         echo "+---+------+------+------+------+------+------+------+------+\n";
-        echo "              {$this->pokemon1->nome} VENCEU\n";
+        echo "                      {$this->pokemon1->nome} VENCEU\n";
         echo "+---+------+------+------+------+------+------+------+------+\n";
         return;
       }
@@ -120,9 +118,9 @@ class Duelo implements InterfaceDuelo{
     $defensor->receberDano($dano);
 
     echo "+-----------------------------------------------------------+\n";
-    echo "  {$atacante->nome} USOU {$movimentoEscolhido->getNome()}, CAUSANDO {$dano} DE DANO A {$defensor->nome}\n";
+    echo " {$atacante->nome} USOU {$movimentoEscolhido->getNome()}, CAUSANDO {$dano} DE DANO A {$defensor->nome}\n";
     echo "+-----------------------------------------------------------+\n";
-    echo "          RESTOU {$defensor->hpAtual} DE HP PARA {$defensor->nome}\n";
+    echo "                RESTOU {$defensor->hpAtual} DE HP PARA {$defensor->nome}\n";
     echo "+-----------------------------------------------------------+\n\n\n";
   }
 

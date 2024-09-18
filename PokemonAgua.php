@@ -5,8 +5,12 @@ require_once("InterfacePassiva.php");
 class PokemonAgua extends Pokemon implements InterfacePassiva{
 
   public function ativarPassiva(){
-    $danoPassivo = (int)($this->hpAtual * 0.10);
-    $this->receberDano($danoPassivo);
-    echo "                {$this->nome} SOFREU {$danoPassivo} DE DANO!\n\n\n";
+    $curaPassiva = (int)($this->hp * 0.10);
+    $this->hpAtual += $curaPassiva;
+    if ($this->hpAtual > $this->calcVida($this->hpAtual)) { // Não exceder a vida máxima
+        $this->hpAtual = $this->calcVida($this->hpAtual);
+    }
+    echo "                 {$this->nome} RECUPEROU {$curaPassiva} DE HP!\n";
+    echo "                       +--------------+\n\n";
   }
 }

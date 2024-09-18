@@ -5,8 +5,8 @@ require_once("InterfacePassiva.php");
 class PokemonFogo extends Pokemon implements InterfacePassiva{
 
   public function ativarPassiva(){
-    $danoPassivo = (int)($this->hpAtual * 0.10);
-    $this->receberDano($danoPassivo);
-    echo "                {$this->nome} SOFREU {$danoPassivo} DE DANO!\n\n\n";
+    $this->ataque *= 1.5;
+    echo "            {$this->nome} AUMENTOU SEU ATAQUE EM 1.5X\n";
+    echo "                       +--------------+\n\n";
   }
 }

@@ -7,6 +7,7 @@ class PokemonGrama extends Pokemon implements InterfacePassiva{
   public function ativarPassiva(){
     $danoPassivo = (int)($this->hpAtual * 0.10);
     $this->receberDano($danoPassivo);
-    echo "                {$this->nome} SOFREU {$danoPassivo} DE DANO!\n\n\n";
+    echo "                {$this->nome} SOFREU {$danoPassivo} DE DANO!\n";
+    echo "                       +--------------+\n\n";
   }
 }
