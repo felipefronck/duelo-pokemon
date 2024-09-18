@@ -1,24 +1,31 @@
 <?php
 
-abstract class Pokemon extends Movimentos implements InterfaceCombate{
+abstract class Pokemon extends Movimento implements InterfaceCombate{
   public string $nome;
-  public EnumTipo $tipoPokemon;
   public int $hp;
-  public EnumFraqueza $fraqueza;
-  public EnumResistencia $resistencia;
+  public string $tipoPokemon;
+  public string $fraqueza;
+  public string $resistencia;
+  public int $ataque;
+  public int $defesa;
+  public int $ataqueEspecial;
+  public int $defesaEspecial;
+  public $movimentos = [];
 
-  function __construct(string $nome, EnumTipo $tipoPokemon, int $hp, EnumFraqueza $fraqueza, EnumResistencia $resistencia){
+  function __construct(string $nome, int $hp, string $tipoPokemon, string $fraqueza, string $resistencia, int $ataque, int $defesa, int $ataqueEspecial, int $defesaEspecial, array $movimentos = []){
     $this->nome = $nome;
-    $this->tipoPokemon = $tipoPokemon;
     $this->hp = $hp;
+    $this->tipoPokemon = $tipoPokemon;
     $this->fraqueza = $fraqueza;
     $this->resistencia = $resistencia;
+    $this->ataque = $ataque;
+    $this->defesa = $defesa;
+    $this->ataqueEspecial = $ataqueEspecial;
+    $this->defesaEspecial = $defesaEspecial;
+    $this->movimentos = $movimentos;
   }
 
-  public function calculaVida(int $hp){
-    $vidaTotal = (((31 * 2) / 4 + $hp + 100) / 100) * 50 + 10 + 50;
-    return $vidaTotal;
-  }
+  abstract protected function calculaVida(int $hp);
 
   public function setNome(string $nome){
     $this->nome = $nome;
@@ -27,7 +34,7 @@ abstract class Pokemon extends Movimentos implements InterfaceCombate{
     return $this->nome;
   }
   
-  public function setTipo(EnumTipo $tipoPokemon){
+  public function setTipo(string $tipoPokemon){
     $this->tipoPokemon = $tipoPokemon;
   }
   public function getTipo(){
@@ -41,14 +48,14 @@ abstract class Pokemon extends Movimentos implements InterfaceCombate{
     return $this->hp;
   }
 
-  public function setFraqueza(EnumFraqueza $fraqueza){
+  public function setFraqueza(string $fraqueza){
     $this->fraqueza = $fraqueza;
   }
   public function getFraqueza(){
     return $this->fraqueza;
   }
 
-  public function setResistencia(EnumResistencia $resistencia){
+  public function setResistencia(string $resistencia){
     $this->resistencia = $resistencia;
   }
   public function getResistencia(){

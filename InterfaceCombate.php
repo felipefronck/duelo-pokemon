@@ -1,8 +1,8 @@
 <?php
 
-interface InterfaceCombate {
-  public function ataqueBasico();
-  public function ataqueEspecial();
-  public function defesaBasica();
-  public function defesaEspecial();
+interface InterfaceCombate{
+  public function calculaAtaqueBasico($ataque);
+  public function calculaAtaqueEspecial($ataque);
+  public function calculaDefesaBasica($defesa);
+  public function calculaDefesaEspecial($defesa);
 }
