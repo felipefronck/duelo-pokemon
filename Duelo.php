@@ -35,10 +35,10 @@ class Duelo implements InterfaceDuelo{
 
       if($this->pokemon1->hpAtual <= 0){
         echo "+-----------------------------------------------------------+\n";
-        echo "           {$this->pokemon1->nome} FOI DERROTADO\n";
+        echo "                  {$this->pokemon1->nome} FOI DERROTADO\n";
         echo "+-----------------------------------------------------------+\n\n";
-        echo "+-----------------------------------------------------------+\n";
-        echo "           {$this->pokemon2->nome} VENCEU\n";
+        echo "+---+------+------+------+------+------+------+------+------+\n";
+        echo "                      {$this->pokemon2->nome} VENCEU\n";
         echo "+---+------+------+------+------+------+------+------+------+\n";
         return;
       } else if($this->pokemon2->hpAtual <= 0){
@@ -123,6 +123,4 @@ class Duelo implements InterfaceDuelo{
     echo "                RESTOU {$defensor->hpAtual} DE HP PARA {$defensor->nome}\n";
     echo "+-----------------------------------------------------------+\n\n\n";
   }
-
-
 }

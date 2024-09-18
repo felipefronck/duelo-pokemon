@@ -18,12 +18,6 @@ class Movimento implements InterfaceMovimento{
     return $this->nome;
   }
 
-  // public function calculaDano(Pokemon $atacante, Pokemon $defensor){
-  //   $atk = $atacante->ataque;
-  //   $def = $defensor->defesa;
-  //   return(int)(50 * 0.4 + 2 * $this->poder * ($atk / $def));
-  // }
-
   public function getNome(){
     return $this->nome;
   }
