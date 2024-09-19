@@ -17,7 +17,7 @@ class Main {
     ];
 
     $arcanineMovimentos = [
-      new Movimento("EMBER", 40, "BÁSICO", "FÍSICO"),
+      new Movimento("TACKLE", 40, "BÁSICO", "FÍSICO"),
       new Movimento("FIRE FANG", 65, "FOGO", "ESPECIAL"),
       new Movimento("FLAMETHEOWER", 90, "FOGO", "ESPECIAL")
     ];
